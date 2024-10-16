@@ -1,6 +1,11 @@
 import { View, Text, Image} from "react-native"
+import { MapPin, Calendar as IconCalendar, Settings2 } from "lucide-react-native"
+
+import { colors } from "@/styles/colors"
 
 import { Input } from "@/components/input"
+import { Button } from "@/components/button"
+
 
 
 export default function Index(){
@@ -16,12 +21,24 @@ export default function Index(){
         Convide seus amigos e planeje sua{"\n"} próxima viagem!
       </Text>
 
-      <View className="w-full bg-zinc-900 p-4 rounded-lg my-8 border border-zinc-800">
+      <View className="w-full bg-zinc-900 p-4 rounded-xl my-8 border border-zinc-800">
         <Input variant="primary">
+          <MapPin color={colors.zinc[400]} size={20}/>
           <Input.Field placeholder="Para Onde?"/>
         </Input>
-      </View>
-      
+
+        <Input variant="primary">
+          <IconCalendar color={colors.zinc[400]} size={20}/>
+          <Input.Field placeholder="Para Onde?"/>
+        </Input>
+
+        <View className="border-b py-3 border-zinc-800">
+          <Button>
+              <Button.Title>Alterar local/data</Button.Title>
+              <Settings2/>
+          </Button>
+        </View>
+      </View>  
     </View>
   )
 }
