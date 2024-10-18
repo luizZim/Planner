@@ -1,5 +1,5 @@
 import { View, Text, Image} from "react-native"
-import { MapPin, Calendar as IconCalendar, Settings2 } from "lucide-react-native"
+import { MapPin, Calendar as IconCalendar, Settings2, UserRoundPlus, ArrowRight } from "lucide-react-native"
 
 import { colors } from "@/styles/colors"
 
@@ -9,6 +9,11 @@ import { Button } from "@/components/button"
 
 
 export default function Index(){
+
+  function handleNextStepForm(){
+    
+  }
+
   return(
     <View className="flex-1 items-center justify-center px-5">
       <Image 
@@ -29,16 +34,34 @@ export default function Index(){
 
         <Input variant="primary">
           <IconCalendar color={colors.zinc[400]} size={20}/>
-          <Input.Field placeholder="Para Onde?"/>
+          <Input.Field placeholder="Quando?"/>
         </Input>
 
         <View className="border-b py-3 border-zinc-800">
-          <Button>
+          <Button variant="secondary">
               <Button.Title>Alterar local/data</Button.Title>
-              <Settings2/>
+              <Settings2 color={colors.zinc[200]} size={20}/>
           </Button>
         </View>
+
+        <Input variant="primary">
+          <UserRoundPlus color={colors.zinc[400]} size={20}/>
+          <Input.Field placeholder="Quem estará na viagem?"/>
+        </Input>
+
+        <Button>
+              <Button.Title>Continuar</Button.Title>
+              <ArrowRight color={colors.lime[950]} size={20}/>
+          </Button>
       </View>  
+
+      <Text className="text-zinc-500 font-regular text-center text-base">
+        Ao planejar sua viagem pela plann.er você automaticamente concorda com 
+        nossos{" "} 
+        <Text className="text-zinc-300 underline">
+          termos de uso e políticas de privacidade.
+        </Text>
+      </Text>
     </View>
   )
 }
