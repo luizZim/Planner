@@ -15,36 +15,36 @@ type ButtonProps = TouchableOpacityProps & {
 
 const ThemeContext = createContext<{ variant?: Variants }>({})
 
-function Button({variant="primary", isLoading, children, ...rest }: ButtonProps){
+function Button({ variant = "primary", isLoading, children, ...rest }: ButtonProps) {
   return (
-  <TouchableOpacity 
-    activeOpacity={0.7}
-    disabled={isLoading}
-    {...rest}
+    <TouchableOpacity
+      activeOpacity={0.7}
+      disabled={isLoading}
+      {...rest}
     >
-    <View
-      className={clsx(
-        "w-full h-11 flex-row items-center justify-center rounded-lg gap-2",
-        {
-          "bg-lime-300" : variant === "primary",
-          "bg-zinc-800" : variant === "secondary"
-        }
-      )}
+      <View
+        className={clsx(
+          "w-full h-11 flex-row items-center justify-center rounded-lg gap-2",
+          {
+            "bg-lime-300": variant === "primary",
+            "bg-zinc-800": variant === "secondary"
+          }
+        )}
       >
-      <ThemeContext.Provider value={{ variant }}>
-        { isLoading ? <ActivityIndicator className="text-lime-950"/> : children}
-      </ThemeContext.Provider>
-    </View>
-  </TouchableOpacity>
+        <ThemeContext.Provider value={{ variant }}>
+          {isLoading ? <ActivityIndicator className="text-lime-950" /> : children}
+        </ThemeContext.Provider>
+      </View>
+    </TouchableOpacity>
   )
 }
 
-function Title({ children, }: TextProps){
+function Title({ children, }: TextProps) {
   const { variant } = useContext(ThemeContext)
   return <Text className={clsx(
-    "text-base font-semibold", 
-    {"text-lime-950" : variant === "primary"},
-    {"text-zinc-200" : variant === "secondary"}
+    "text-base font-semibold",
+    { "text-lime-950": variant === "primary" },
+    { "text-zinc-200": variant === "secondary" }
   )}
   >
     {children}
